@@ -89,6 +89,8 @@ void board_led_write(uint32_t value);
 // Write color to rgb strip
 void board_rgb_write(uint8_t const rgb[]);
 
+bool board_button_read(void);
+
 // Init uart hardware
 void board_uart_init(uint32_t baud_rate);
 

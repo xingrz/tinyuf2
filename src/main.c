@@ -102,6 +102,8 @@ int main(void)
 // return true if start DFU mode, else App mode
 static bool check_dfu_mode(void)
 {
+  if ( board_button_read() ) return true;
+
   // TODO enable for all port instead of one with double tap
 #if TINYUF2_DFU_DOUBLE_TAP
   // TUF2_LOG1_HEX(&DBL_TAP_REG);

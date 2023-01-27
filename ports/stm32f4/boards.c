@@ -356,6 +356,22 @@ void board_rgb_write(uint8_t const rgb[])
 
 #endif
 
+#ifdef BUTTON_PIN
+
+bool board_button_read(void)
+{
+  return BUTTON_STATE_ACTIVE == HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN);
+}
+
+#else
+
+bool board_button_read(void)
+{
+  return false;
+}
+
+#endif
+
 //--------------------------------------------------------------------+
 // Timer
 //--------------------------------------------------------------------+
