@@ -267,10 +267,21 @@ uint8_t board_usb_get_serial(uint8_t serial_id[16])
 // LED pattern
 //--------------------------------------------------------------------+
 
+#ifdef LED_PIN
+
 void board_led_write(uint32_t state)
 {
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, state ? LED_STATE_ON : (1-LED_STATE_ON));
 }
+
+#else
+
+void board_led_write(uint32_t state)
+{
+  (void)state;
+}
+
+#endif
 
 #if NEOPIXEL_NUMBER
 #define MAGIC_800_INT   900000  // ~1.11 us -> 1.2  field
